@@ -448,3 +448,20 @@ class ResponseError(Exception):
         self.message = message
         if data:
             self.data = data
+
+class VersionedTextDocumentIdentifier(TextDocumentIdentifier):
+    def __init__(self, uri, version):
+        super(VersionedTextDocumentIdentifier, self).__init__(uri)
+        self.version = version
+
+class TextDocumentContentChangeEvent(object):
+    def __init__(self, range, rangeLength, text):
+        """
+        Constructs a new TextDocumentContentChangeEvent instance.
+        :param Range range: The range of the document that changed.
+        :param int rangeLength: The length of the range that got replaced.
+        :param str text: The new text of the range/document.
+        """
+        self.range = range
+        self.rangeLength = rangeLength
+        self.text = text
